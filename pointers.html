@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Pointers</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'recursion';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'strings-and-runes';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="pointers">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Pointers</h2>
       
@@ -191,7 +182,24 @@ Dereference လုပ်ထားတဲ့ pointer ကို တန်ဖို�
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'recursion';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'strings-and-runes';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func zeroval(ival int) {\u000A    ival \u003D 0\u000A}\u000A');codeLines.push('func zeroptr(iptr *int) {\u000A    *iptr \u003D 0\u000A}\u000A');codeLines.push('func main() {\u000A    i :\u003D 1\u000A    fmt.Println(\"initial:\", i)\u000A');codeLines.push('    zeroval(i)\u000A    fmt.Println(\"zeroval:\", i)\u000A');codeLines.push('    zeroptr(\u0026i)\u000A    fmt.Println(\"zeroptr:\", i)\u000A');codeLines.push('    fmt.Println(\"pointer:\", \u0026i)\u000A}\u000A');codeLines.push('');
     </script>

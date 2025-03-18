@@ -5,21 +5,11 @@
     <title>Go by Example မြန်မာဘာသာ: Regular Expressions</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'text-templates';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'json';
-          }
-          
-      }
-  </script>
-  <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="regular-expressions">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Regular Expressions</h2>
       
@@ -321,7 +311,24 @@ the <a href="https://pkg.go.dev/regexp"><code>regexp</code></a> package docs.</p
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+        onkeydown = (e) => {
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'text-templates';
+          }
+          if (e.key == "ArrowRight") {
+              window.location.href = 'json';
+          }
+        }
       var codeLines = [];
       codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bytes\"\u000A    \"fmt\"\u000A    \"regexp\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    match, _ :\u003D regexp.MatchString(\"p([a-z]+)ch\", \"peach\")\u000A    fmt.Println(match)\u000A');codeLines.push('    r, _ :\u003D regexp.Compile(\"p([a-z]+)ch\")\u000A');codeLines.push('    fmt.Println(r.MatchString(\"peach\"))\u000A');codeLines.push('    fmt.Println(r.FindString(\"peach punch\"))\u000A');codeLines.push('    fmt.Println(\"idx:\", r.FindStringIndex(\"peach punch\"))\u000A');codeLines.push('    fmt.Println(r.FindStringSubmatch(\"peach punch\"))\u000A');codeLines.push('    fmt.Println(r.FindStringSubmatchIndex(\"peach punch\"))\u000A');codeLines.push('    fmt.Println(r.FindAllString(\"peach punch pinch\", -1))\u000A');codeLines.push('    fmt.Println(\"all:\", r.FindAllStringSubmatchIndex(\u000A        \"peach punch pinch\", -1))\u000A');codeLines.push('    fmt.Println(r.FindAllString(\"peach punch pinch\", 2))\u000A');codeLines.push('    fmt.Println(r.Match([]byte(\"peach\")))\u000A');codeLines.push('    r \u003D regexp.MustCompile(\"p([a-z]+)ch\")\u000A    fmt.Println(\"regexp:\", r)\u000A');codeLines.push('    fmt.Println(r.ReplaceAllString(\"a peach\", \"\u003Cfruit\u003E\"))\u000A');codeLines.push('    in :\u003D []byte(\"a peach\")\u000A    out :\u003D r.ReplaceAllFunc(in, bytes.ToUpper)\u000A    fmt.Println(string(out))\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>

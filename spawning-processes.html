@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Spawning Processes</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'context';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'execing-processes';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="spawning-processes">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Spawning Processes</h2>
       
@@ -263,7 +254,24 @@ non-zero return code နဲ့ ထွက်သွားပါလိမ့်မ�
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'context';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'execing-processes';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"io\"\u000A    \"os/exec\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    dateCmd :\u003D exec.Command(\"date\")\u000A');codeLines.push('    dateOut, err :\u003D dateCmd.Output()\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(\"\u003E date\")\u000A    fmt.Println(string(dateOut))\u000A');codeLines.push('    _, err \u003D exec.Command(\"date\", \"-x\").Output()\u000A    if err !\u003D nil {\u000A        switch e :\u003D err.(type) {\u000A        case *exec.Error:\u000A            fmt.Println(\"failed executing:\", err)\u000A        case *exec.ExitError:\u000A            fmt.Println(\"command exit rc \u003D\", e.ExitCode())\u000A        default:\u000A            panic(err)\u000A        }\u000A    }\u000A');codeLines.push('    grepCmd :\u003D exec.Command(\"grep\", \"hello\")\u000A');codeLines.push('    grepIn, _ :\u003D grepCmd.StdinPipe()\u000A    grepOut, _ :\u003D grepCmd.StdoutPipe()\u000A    grepCmd.Start()\u000A    grepIn.Write([]byte(\"hello grep\\ngoodbye grep\"))\u000A    grepIn.Close()\u000A    grepBytes, _ :\u003D io.ReadAll(grepOut)\u000A    grepCmd.Wait()\u000A');codeLines.push('    fmt.Println(\"\u003E grep hello\")\u000A    fmt.Println(string(grepBytes))\u000A');codeLines.push('    lsCmd :\u003D exec.Command(\"bash\", \"-c\", \"ls -a -l -h\")\u000A    lsOut, err :\u003D lsCmd.Output()\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(\"\u003E ls -a -l -h\")\u000A    fmt.Println(string(lsOut))\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>

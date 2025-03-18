@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Exec'ing Processes</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'spawning-processes';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'signals';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="execing-processes">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Exec'ing Processes</h2>
       
@@ -196,9 +187,26 @@ goroutine တွေ စတင်ခြင်း၊ process တွေ spawn
     </p>
 
     </div>
-    <script>
-      var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"os\"\u000A    \"os/exec\"\u000A    \"syscall\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    binary, lookErr :\u003D exec.LookPath(\"ls\")\u000A    if lookErr !\u003D nil {\u000A        panic(lookErr)\u000A    }\u000A');codeLines.push('    args :\u003D []string{\"ls\", \"-a\", \"-l\", \"-h\"}\u000A');codeLines.push('    env :\u003D os.Environ()\u000A');codeLines.push('    execErr :\u003D syscall.Exec(binary, args, env)\u000A    if execErr !\u003D nil {\u000A        panic(execErr)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+    onkeydown = (e) => {
+      if (e.key == "ArrowLeft") {
+          window.location.href = 'spawning-processes';
+      }
+      if (e.key == "ArrowRight") {
+          window.location.href = 'signals';
+      }
+    }
+    var codeLines = [];
+    codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"os\"\u000A    \"os/exec\"\u000A    \"syscall\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    binary, lookErr :\u003D exec.LookPath(\"ls\")\u000A    if lookErr !\u003D nil {\u000A        panic(lookErr)\u000A    }\u000A');codeLines.push('    args :\u003D []string{\"ls\", \"-a\", \"-l\", \"-h\"}\u000A');codeLines.push('    env :\u003D os.Environ()\u000A');codeLines.push('    execErr :\u003D syscall.Exec(binary, args, env)\u000A    if execErr !\u003D nil {\u000A        panic(execErr)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

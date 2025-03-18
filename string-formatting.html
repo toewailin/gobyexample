@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: String Formatting</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'string-functions';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'text-templates';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="string-formatting">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: String Formatting</h2>
       
@@ -448,7 +439,24 @@ format လုပ်ထားတဲ့ string ကို <code>os.Stdout</code> �
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'string-functions';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'text-templates';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('type point struct {\u000A    x, y int\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    p :\u003D point{1, 2}\u000A    fmt.Printf(\"struct1: %v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"struct2: %+v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"struct3: %#v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"type: %T\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"bool: %t\\n\", true)\u000A');codeLines.push('    fmt.Printf(\"int: %d\\n\", 123)\u000A');codeLines.push('    fmt.Printf(\"bin: %b\\n\", 14)\u000A');codeLines.push('    fmt.Printf(\"char: %c\\n\", 33)\u000A');codeLines.push('    fmt.Printf(\"hex: %x\\n\", 456)\u000A');codeLines.push('    fmt.Printf(\"float1: %f\\n\", 78.9)\u000A');codeLines.push('    fmt.Printf(\"float2: %e\\n\", 123400000.0)\u000A    fmt.Printf(\"float3: %E\\n\", 123400000.0)\u000A');codeLines.push('    fmt.Printf(\"str1: %s\\n\", \"\\\"string\\\"\")\u000A');codeLines.push('    fmt.Printf(\"str2: %q\\n\", \"\\\"string\\\"\")\u000A');codeLines.push('    fmt.Printf(\"str3: %x\\n\", \"hex this\")\u000A');codeLines.push('    fmt.Printf(\"pointer: %p\\n\", \u0026p)\u000A');codeLines.push('    fmt.Printf(\"width1: |%6d|%6d|\\n\", 12, 345)\u000A');codeLines.push('    fmt.Printf(\"width2: |%6.2f|%6.2f|\\n\", 1.2, 3.45)\u000A');codeLines.push('    fmt.Printf(\"width3: |%-6.2f|%-6.2f|\\n\", 1.2, 3.45)\u000A');codeLines.push('    fmt.Printf(\"width4: |%6s|%6s|\\n\", \"foo\", \"b\")\u000A');codeLines.push('    fmt.Printf(\"width5: |%-6s|%-6s|\\n\", \"foo\", \"b\")\u000A');codeLines.push('    s :\u003D fmt.Sprintf(\"sprintf: a %s\", \"string\")\u000A    fmt.Println(s)\u000A');codeLines.push('    fmt.Fprintf(os.Stderr, \"io: an %s\\n\", \"error\")\u000A}\u000A');codeLines.push('');
     </script>

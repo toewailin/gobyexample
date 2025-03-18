@@ -117,16 +117,11 @@
           document.getElementById('sidebar-placeholder').innerHTML = data;
         })
         .catch(error => console.error('Error loading sidebar:', error));
-    </script>
-
-    <script>
       onkeydown = (e) => {
         if (e.key == "ArrowRight") {
           window.location.href = 'values';
         }
       }
-    </script>
-    <script>
       var codeLines = [];
       codeLines.push('package main\u000A');
       codeLines.push('import \"fmt\"\u000A');

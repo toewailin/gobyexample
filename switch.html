@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Switch</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'if-else';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'arrays';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="switch">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Switch</h2>
       
@@ -187,7 +178,24 @@ type ကိုစစ်တာပေါ့။</p>
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'if-else';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'arrays';
+        }
+      }
       var codeLines = [];
       codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    i :\u003D 2\u000A    fmt.Print(\"Write \", i, \" as \")\u000A    switch i {\u000A    case 1:\u000A        fmt.Println(\"one\")\u000A    case 2:\u000A        fmt.Println(\"two\")\u000A    case 3:\u000A        fmt.Println(\"three\")\u000A    }\u000A');codeLines.push('    switch time.Now().Weekday() {\u000A    case time.Saturday, time.Sunday:\u000A        fmt.Println(\"It\'s the weekend\")\u000A    default:\u000A        fmt.Println(\"It\'s a weekday\")\u000A    }\u000A');codeLines.push('    t :\u003D time.Now()\u000A    switch {\u000A    case t.Hour() \u003C 12:\u000A        fmt.Println(\"It\'s before noon\")\u000A    default:\u000A        fmt.Println(\"It\'s after noon\")\u000A    }\u000A');codeLines.push('    whatAmI :\u003D func(i interface{}) {\u000A        switch t :\u003D i.(type) {\u000A        case bool:\u000A            fmt.Println(\"I\'m a bool\")\u000A        case int:\u000A            fmt.Println(\"I\'m an int\")\u000A        default:\u000A            fmt.Printf(\"Don\'t know type %T\\n\", t)\u000A        }\u000A    }\u000A    whatAmI(true)\u000A    whatAmI(1)\u000A    whatAmI(\"hey\")\u000A}\u000A');codeLines.push('');
     </script>

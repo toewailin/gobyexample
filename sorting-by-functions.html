@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Sorting by Functions</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'sorting';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'panic';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="sorting-by-functions">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Sorting by Functions</h2>
       
@@ -181,7 +172,24 @@ Go slice များကို စိတ်ကြိုက် function
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'sorting';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'panic';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sort\"\u000A)\u000A');codeLines.push('type byLength []string\u000A');codeLines.push('func (s byLength) Len() int {\u000A    return len(s)\u000A}\u000Afunc (s byLength) Swap(i, j int) {\u000A    s[i], s[j] \u003D s[j], s[i]\u000A}\u000Afunc (s byLength) Less(i, j int) bool {\u000A    return len(s[i]) \u003C len(s[j])\u000A}\u000A');codeLines.push('func main() {\u000A    fruits :\u003D []string{\"peach\", \"banana\", \"kiwi\"}\u000A    sort.Sort(byLength(fruits))\u000A    fmt.Println(fruits)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>

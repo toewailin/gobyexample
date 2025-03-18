@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Sorting</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'stateful-goroutines';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'sorting-by-functions';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="sorting">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Sorting</h2>
       
@@ -159,7 +150,24 @@ string အမျိုးအစားအတွက် နမူနာကို �
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'stateful-goroutines';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'sorting-by-functions';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sort\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    strs :\u003D []string{\"c\", \"a\", \"b\"}\u000A    sort.Strings(strs)\u000A    fmt.Println(\"Strings:\", strs)\u000A');codeLines.push('    ints :\u003D []int{7, 2, 4}\u000A    sort.Ints(ints)\u000A    fmt.Println(\"Ints:   \", ints)\u000A');codeLines.push('    s :\u003D sort.IntsAreSorted(ints)\u000A    fmt.Println(\"Sorted: \", s)\u000A}\u000A');codeLines.push('');
     </script>

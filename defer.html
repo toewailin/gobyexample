@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Defer</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'panic';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'recover';
-          }
-          
-      }
-  </script>
   <body>
+        <!-- Placeholder for sidebar -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="content">
     <div class="example" id="defer">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Defer</h2>
       
@@ -202,7 +193,24 @@ error စစ်ဖို့ အရေးကြီးပါတယ်။</p>
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'panic';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'recover';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    f :\u003D createFile(\"/tmp/defer.txt\")\u000A    defer closeFile(f)\u000A    writeFile(f)\u000A}\u000A');codeLines.push('func createFile(p string) *os.File {\u000A    fmt.Println(\"creating\")\u000A    f, err :\u003D os.Create(p)\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    return f\u000A}\u000A');codeLines.push('func writeFile(f *os.File) {\u000A    fmt.Println(\"writing\")\u000A    fmt.Fprintln(f, \"data\")\u000A');codeLines.push('}\u000A');codeLines.push('func closeFile(f *os.File) {\u000A    fmt.Println(\"closing\")\u000A    err :\u003D f.Close()\u000A');codeLines.push('    if err !\u003D nil {\u000A        fmt.Fprintf(os.Stderr, \"error: %v\\n\", err)\u000A        os.Exit(1)\u000A    }\u000A}\u000A');codeLines.push('');
     </script>

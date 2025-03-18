@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Command-Line Arguments</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'testing-and-benchmarking';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'command-line-flags';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="command-line-arguments">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Command-Line Arguments</h2>
       
@@ -165,7 +156,24 @@ flags တွေသုံးပြီး လေ့လာကြမှာ ဖြစ
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'testing-and-benchmarking';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'command-line-flags';
+        }
+    }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    argsWithProg :\u003D os.Args\u000A    argsWithoutProg :\u003D os.Args[1:]\u000A');codeLines.push('    arg :\u003D os.Args[3]\u000A');codeLines.push('    fmt.Println(argsWithProg)\u000A    fmt.Println(argsWithoutProg)\u000A    fmt.Println(arg)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>

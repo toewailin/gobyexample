@@ -5,21 +5,11 @@
     <title>Go by Example မြန်မာဘာသာ: Recursion</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'closures';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'pointers';
-          }
-          
-      }
-  </script>
-  <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="recursion">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Recursion</h2>
       
@@ -173,7 +163,24 @@ type ကို <code>var</code> ဆိုပီးသီးသန့်ကြေ
     </p>
 
     </div>
-    <script>
+    </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'closures';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'pointers';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func fact(n int) int {\u000A    if n \u003D\u003D 0 {\u000A        return 1\u000A    }\u000A    return n * fact(n-1)\u000A}\u000A');codeLines.push('func main() {\u000A    fmt.Println(fact(7))\u000A');codeLines.push('    var fib func(n int) int\u000A');codeLines.push('    fib \u003D func(n int) int {\u000A        if n \u003C 2 {\u000A            return n\u000A        }\u000A');codeLines.push('        return fib(n-1) + fib(n-2)\u000A    }\u000A');codeLines.push('    fmt.Println(fib(7))\u000A}\u000A');codeLines.push('');
     </script>

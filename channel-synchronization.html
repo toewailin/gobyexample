@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Channel Synchronization</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'channel-buffering';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'channel-directions';
-          }
-          
-      }
-  </script>
   <body>
+        <!-- Placeholder for sidebar -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="content">
     <div class="example" id="channel-synchronization">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Channel Synchronization</h2>
       
@@ -175,7 +166,24 @@ Goroutine အများကြီး ပြီးဆုံးတာကို �
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'channel-buffering';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'channel-directions';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func worker(done chan bool) {\u000A    fmt.Print(\"working...\")\u000A    time.Sleep(time.Second)\u000A    fmt.Println(\"done\")\u000A');codeLines.push('    done \u003C- true\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    done :\u003D make(chan bool, 1)\u000A    go worker(done)\u000A');codeLines.push('    \u003C-done\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>

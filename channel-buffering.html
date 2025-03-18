@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Channel Buffering</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'channels';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'channel-synchronization';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="channel-buffering">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Channel Buffering</h2>
       
@@ -144,7 +135,24 @@
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'channels';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'channel-synchronization';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    messages :\u003D make(chan string, 2)\u000A');codeLines.push('    messages \u003C- \"buffered\"\u000A    messages \u003C- \"channel\"\u000A');codeLines.push('    fmt.Println(\u003C-messages)\u000A    fmt.Println(\u003C-messages)\u000A}\u000A');codeLines.push('');
     </script>

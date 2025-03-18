@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Closures</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'variadic-functions';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'recursion';
-          }
-          
-      }
-  </script>
   <body>
+        <!-- Placeholder for sidebar -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="content">
     <div class="example" id="closures">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Closures</h2>
       
@@ -194,7 +185,24 @@ recursion.</p>
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'variadic-functions';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'recursion';
+        }
+    }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('');codeLines.push('func intSeq() func() int {\u000A    i :\u003D 0\u000A    return func() int {\u000A        i++\u000A        return i\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    nextInt :\u003D intSeq()\u000A');codeLines.push('    fmt.Println(nextInt())\u000A    fmt.Println(nextInt())\u000A    fmt.Println(nextInt())\u000A');codeLines.push('    newInts :\u003D intSeq()\u000A    fmt.Println(newInts())\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>

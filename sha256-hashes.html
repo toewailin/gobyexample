@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: SHA256 Hashes</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'url-parsing';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'base64-encoding';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="sha256-hashes">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: SHA256 Hashes</h2>
       
@@ -196,7 +187,24 @@ binary သို့မဟုတ် စာသား blob တွေအတွက်
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'url-parsing';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'base64-encoding';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"crypto/sha256\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func main() {\u000A    s :\u003D \"sha256 this string\"\u000A');codeLines.push('    h :\u003D sha256.New()\u000A');codeLines.push('    h.Write([]byte(s))\u000A');codeLines.push('    bs :\u003D h.Sum(nil)\u000A');codeLines.push('    fmt.Println(s)\u000A    fmt.Printf(\"%x\\n\", bs)\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
     </script>

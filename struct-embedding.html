@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Struct Embedding</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'interfaces';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'generics';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="struct-embedding">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Struct Embedding</h2>
       
@@ -240,7 +231,24 @@ implement လုပ်နေတာကို တွေ့ရပါတယ်။</p
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'interfaces';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'generics';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type base struct {\u000A    num int\u000A}\u000A');codeLines.push('func (b base) describe() string {\u000A    return fmt.Sprintf(\"base with num\u003D%v\", b.num)\u000A}\u000A');codeLines.push('type container struct {\u000A    base\u000A    str string\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    co :\u003D container{\u000A        base: base{\u000A            num: 1,\u000A        },\u000A        str: \"some name\",\u000A    }\u000A');codeLines.push('    fmt.Printf(\"co\u003D{num: %v, str: %v}\\n\", co.num, co.str)\u000A');codeLines.push('    fmt.Println(\"also num:\", co.base.num)\u000A');codeLines.push('    fmt.Println(\"describe:\", co.describe())\u000A');codeLines.push('    type describer interface {\u000A        describe() string\u000A    }\u000A');codeLines.push('    var d describer \u003D co\u000A    fmt.Println(\"describer:\", d.describe())\u000A}\u000A');codeLines.push('');
     </script>

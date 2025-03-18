@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Environment Variables</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'command-line-subcommands';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'http-client';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="environment-variables">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Environment Variables</h2>
       
@@ -185,7 +176,24 @@ run နေသော ပရိုဂရမ်သည် ထိုတန်ဖိ�
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'command-line-subcommands';
+          }
+          if (e.key == "ArrowRight") {
+              window.location.href = 'http-client';
+          }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A    \"strings\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    os.Setenv(\"FOO\", \"1\")\u000A    fmt.Println(\"FOO:\", os.Getenv(\"FOO\"))\u000A    fmt.Println(\"BAR:\", os.Getenv(\"BAR\"))\u000A');codeLines.push('    fmt.Println()\u000A    for _, e :\u003D range os.Environ() {\u000A        pair :\u003D strings.SplitN(e, \"\u003D\", 2)\u000A        fmt.Println(pair[0])\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
     </script>

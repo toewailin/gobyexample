@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Embed Directive</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'temporary-files-and-directories';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'testing-and-benchmarking';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="embed-directive">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Embed Directive</h2>
       
@@ -202,7 +193,24 @@ embed directive အကြောင်း ပိုမိုလေ့လာလိ
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'temporary-files-and-directories';
+          }
+          if (e.key == "ArrowRight") {
+              window.location.href = 'testing-and-benchmarking';
+          }
+      }
       var codeLines = [];
       codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"embed\"\u000A)\u000A');codeLines.push('//go:embed folder/single_file.txt\u000Avar fileString string\u000A');codeLines.push('//go:embed folder/single_file.txt\u000Avar fileByte []byte\u000A');codeLines.push('//go:embed folder/single_file.txt\u000A//go:embed folder/*.hash\u000Avar folder embed.FS\u000A');codeLines.push('func main() {\u000A');codeLines.push('    print(fileString)\u000A    print(string(fileByte))\u000A');codeLines.push('    content1, _ :\u003D folder.ReadFile(\"folder/file1.hash\")\u000A    print(string(content1))\u000A');codeLines.push('    content2, _ :\u003D folder.ReadFile(\"folder/file2.hash\")\u000A    print(string(content2))\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>

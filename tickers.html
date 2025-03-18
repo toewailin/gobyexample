@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Tickers</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'timers';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'worker-pools';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="tickers">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Tickers</h2>
       
@@ -164,7 +155,24 @@
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+      onkeydown = (e) => {
+        if (e.key == "ArrowLeft") {
+            window.location.href = 'timers';
+        }
+        if (e.key == "ArrowRight") {
+            window.location.href = 'worker-pools';
+        }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    ticker :\u003D time.NewTicker(500 * time.Millisecond)\u000A    done :\u003D make(chan bool)\u000A');codeLines.push('    go func() {\u000A        for {\u000A            select {\u000A            case \u003C-done:\u000A                return\u000A            case t :\u003D \u003C-ticker.C:\u000A                fmt.Println(\"Tick at\", t)\u000A            }\u000A        }\u000A    }()\u000A');codeLines.push('    time.Sleep(1600 * time.Millisecond)\u000A    ticker.Stop()\u000A    done \u003C- true\u000A    fmt.Println(\"Ticker stopped\")\u000A}\u000A');codeLines.push('');
     </script>

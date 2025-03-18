@@ -5,21 +5,12 @@
     <title>Go by Example မြန်မာဘာသာ: Epoch</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'time';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'time-formatting-parsing';
-          }
-          
-      }
-  </script>
   <body>
+    <!-- Placeholder for sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content">
     <div class="example" id="epoch">
       <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Epoch</h2>
       
@@ -166,7 +157,24 @@ Go မှာ ဒါကို ဘယ်လိုလုပ်ရမလဲဆို
     </p>
 
     </div>
-    <script>
+  </div>
+
+  <!-- JavaScript to load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+       onkeydown = (e) => {
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'time';
+          }
+          if (e.key == "ArrowRight") {
+              window.location.href = 'time-formatting-parsing';
+          }
+      }
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    now :\u003D time.Now()\u000A    fmt.Println(now)\u000A');codeLines.push('    fmt.Println(now.Unix())\u000A    fmt.Println(now.UnixMilli())\u000A    fmt.Println(now.UnixNano())\u000A');codeLines.push('    fmt.Println(time.Unix(now.Unix(), 0))\u000A    fmt.Println(time.Unix(0, now.UnixNano()))\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
