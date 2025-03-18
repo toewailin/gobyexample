@@ -3,140 +3,266 @@
   <head>
     <meta charset="utf-8">
     <title>Go by Example မြန်မာဘာသာ: Hello World</title>
-    <link rel=stylesheet href="site.css">
-  </head>
-  <script>
-      onkeydown = (e) => {
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'values';
-          }
-          
+    <link rel="stylesheet" href="site.css">
+    <style>
+      /* Basic layout for sidebar and content */
+      body {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
       }
-  </script>
+      .sidebar {
+        width: 250px;
+        min-width: 200px;
+        background-color: #f4f4f4;
+        padding: 20px;
+        height: 100vh;
+        overflow-y: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-right: 1px solid #ddd;
+      }
+      .sidebar h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar ul li {
+        margin: 10px 0;
+      }
+      .sidebar ul li a {
+        text-decoration: none;
+        color: #333;
+      }
+      .sidebar ul li a:hover {
+        text-decoration: underline;
+      }
+      .content {
+        margin-left: 270px; /* Space for sidebar */
+        padding: 20px;
+        flex-grow: 1;
+      }
+      @media (max-width: 768px) {
+        .sidebar {
+          position: relative;
+          width: 100%;
+          height: auto;
+          border-right: none;
+          border-bottom: 1px solid #ddd;
+        }
+        .content {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
   <body>
-    <div class="example" id="hello-world">
-      <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Hello World</h2>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>ကျွန်ုပ်တို့၏ ပထမဆုံး print ထုတ်မယ့်ပရိုဂရမ်သည် ဂန္ထဝင် &ldquo;Hello world&rdquo; message ဘဲဖြစ်ပါတယ်။
-ဒီမှာ ကုဒ်အပြည့်အစုံကိုလည်းဖတ်နိုင်ပါတယ်။</p>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2><a href="./">Go by Example မြန်မာဘာသာ</a></h2>
+      <ul>
+        <li><a href="hello-world">Hello World</a></li>
+        <li><a href="values">Values</a></li>
+        <li><a href="variables">Variables</a></li>
+        <li><a href="constants">Constants</a></li>
+        <li><a href="for">For</a></li>
+        <li><a href="if-else">If/Else</a></li>
+        <li><a href="switch">Switch</a></li>
+        <li><a href="arrays">Arrays</a></li>
+        <li><a href="slices">Slices</a></li>
+        <li><a href="maps">Maps</a></li>
+        <li><a href="range">Range</a></li>
+        <li><a href="functions">Functions</a></li>
+        <li><a href="multiple-return-values">Multiple Return Values</a></li>
+        <li><a href="variadic-functions">Variadic Functions</a></li>
+        <li><a href="closures">Closures</a></li>
+        <li><a href="recursion">Recursion</a></li>
+        <li><a href="pointers">Pointers</a></li>
+        <li><a href="strings-and-runes">Strings and Runes</a></li>
+        <li><a href="structs">Structs</a></li>
+        <li><a href="methods">Methods</a></li>
+        <li><a href="interfaces">Interfaces</a></li>
+        <li><a href="struct-embedding">Struct Embedding</a></li>
+        <li><a href="generics">Generics</a></li>
+        <li><a href="errors">Errors</a></li>
+        <li><a href="goroutines">Goroutines</a></li>
+        <li><a href="channels">Channels</a></li>
+        <li><a href="channel-buffering">Channel Buffering</a></li>
+        <li><a href="channel-synchronization">Channel Synchronization</a></li>
+        <li><a href="channel-directions">Channel Directions</a></li>
+        <li><a href="select">Select</a></li>
+        <li><a href="timeouts">Timeouts</a></li>
+        <li><a href="non-blocking-channel-operations">Non-Blocking Channel Operations</a></li>
+        <li><a href="closing-channels">Closing Channels</a></li>
+        <li><a href="range-over-channels">Range over Channels</a></li>
+        <li><a href="timers">Timers</a></li>
+        <li><a href="tickers">Tickers</a></li>
+        <li><a href="worker-pools">Worker Pools</a></li>
+        <li><a href="waitgroups">WaitGroups</a></li>
+        <li><a href="rate-limiting">Rate Limiting</a></li>
+        <li><a href="atomic-counters">Atomic Counters</a></li>
+        <li><a href="mutexes">Mutexes</a></li>
+        <li><a href="stateful-goroutines">Stateful Goroutines</a></li>
+        <li><a href="sorting">Sorting</a></li>
+        <li><a href="sorting-by-functions">Sorting by Functions</a></li>
+        <li><a href="panic">Panic</a></li>
+        <li><a href="defer">Defer</a></li>
+        <li><a href="recover">Recover</a></li>
+        <li><a href="string-functions">String Functions</a></li>
+        <li><a href="string-formatting">String Formatting</a></li>
+        <li><a href="text-templates">Text Templates</a></li>
+        <li><a href="regular-expressions">Regular Expressions</a></li>
+        <li><a href="json">JSON</a></li>
+        <li><a href="xml">XML</a></li>
+        <li><a href="time">Time</a></li>
+        <li><a href="epoch">Epoch</a></li>
+        <li><a href="time-formatting-parsing">Time Formatting / Parsing</a></li>
+        <li><a href="random-numbers">Random Numbers</a></li>
+        <li><a href="number-parsing">Number Parsing</a></li>
+        <li><a href="url-parsing">URL Parsing</a></li>
+        <li><a href="sha256-hashes">SHA256 Hashes</a></li>
+        <li><a href="base64-encoding">Base64 Encoding</a></li>
+        <li><a href="reading-files">Reading Files</a></li>
+        <li><a href="writing-files">Writing Files</a></li>
+        <li><a href="line-filters">Line Filters</a></li>
+        <li><a href="file-paths">File Paths</a></li>
+        <li><a href="directories">Directories</a></li>
+        <li><a href="temporary-files-and-directories">Temporary Files and Directories</a></li>
+        <li><a href="embed-directive">Embed Directive</a></li>
+        <li><a href="testing-and-benchmarking">Testing and Benchmarking</a></li>
+        <li><a href="command-line-arguments">Command-Line Arguments</a></li>
+        <li><a href="command-line-flags">Command-Line Flags</a></li>
+        <li><a href="command-line-subcommands">Command-Line Subcommands</a></li>
+        <li><a href="environment-variables">Environment Variables</a></li>
+        <li><a href="http-client">HTTP Client</a></li>
+        <li><a href="http-server">HTTP Server</a></li>
+        <li><a href="context">Context</a></li>
+        <li><a href="spawning-processes">Spawning Processes</a></li>
+        <li><a href="execing-processes">Exec'ing Processes</a></li>
+        <li><a href="signals">Signals</a></li>
+        <li><a href="exit">Exit</a></li>
+      </ul>
+    </div>
 
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/Z6XtkWGsUXE"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma">
+    <!-- Main Content -->
+    <div class="content">
+      <div class="example" id="hello-world">
+        <h2><a href="./">Go by Example မြန်မာဘာသာ</a>: Hello World</h2>
+        
+        <table>
+          <tr>
+            <td class="docs">
+              <p>ကျွန်ုပ်တို့၏ ပထမဆုံး print ထုတ်မယ့်ပရိုဂရမ်သည် ဂန္ထဝင် “Hello world” message ဘဲဖြစ်ပါတယ်။
+              ဒီမှာ ကုဒ်အပြည့်အစုံကိုလည်းဖတ်နိုင်ပါတယ်။</p>
+            </td>
+            <td class="code leading">
+              <a href="https://go.dev/play/p/Z6XtkWGsUXE"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+              <pre class="chroma">
 <span class="kn">package</span> <span class="nx">main</span>
-</pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
-</pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">)</span>
+              </pre>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="docs"></td>
+            <td class="code leading">
+              <pre class="chroma"><span class="kn">import</span> <span class="s">"fmt"</span></pre>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="docs"></td>
+            <td class="code">
+              <pre class="chroma">
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">"hello world"</span><span class="p">)</span>
 <span class="p">}</span>
-</pre>
-          </td>
-        </tr>
+              </pre>
+            </td>
+          </tr>
+        </table>
         
-      </table>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>ဒီပရိုဂရမ်ကိုစဖို့ရာအတွက် ဖိုင်ထဲမှာ
-ကုဒ်များကိုထည့်ပေးပါ။
-ပြီးသွားလျှင် <code>go run</code> ကိုသုံးပီး run လုပ်ပါ</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma">
+        <table>
+          <tr>
+            <td class="docs">
+              <p>ဒီပရိုဂရမ်ကိုစဖို့ရာအတွက် ဖိုင်ထဲမှာ
+              ကုဒ်များကိုထည့်ပေးပါ။
+              ပြီးသွားလျှင် <code>go run</code> ကိုသုံးပီး run လုပ်ပါ</p>
+            </td>
+            <td class="code leading">
+              <pre class="chroma">
 <span class="gp">$</span> go run hello-world.go
 <span class="go">hello world</span></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>တခါတလေ ကျနော်တို့ကိုယ့် program ကို
-binary အဖြစ် build လုပ်ပြီး
-run လုပ်ပြီးရှိလျှင် အဲ့အခါ <code>go build</code> ကိုသုံးပါ။</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma">
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="docs">
+              <p>တခါတလေ ကျနော်တို့ကိုယ့် program ကို
+              binary အဖြစ် build လုပ်ပြီး
+              run လုပ်ပြီးရှိလျှင် အဲ့အခါ <code>go build</code> ကိုသုံးပါ။</p>
+            </td>
+            <td class="code leading">
+              <pre class="chroma">
 <span class="gp">$</span> go build hello-world.go
 <span class="gp">$</span> ls
 <span class="go">hello-world    hello-world.go</span></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>binary build လုပ်ထားတဲ့ program
-ကိုဒီလိုတိုက်ရိုက် execute လုပ်နိုင်ပါတယ်</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma">
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="docs">
+              <p>binary build လုပ်ထားတဲ့ program
+              ကိုဒီလိုတိုက်ရိုက် execute လုပ်နိုင်ပါတယ်</p>
+            </td>
+            <td class="code leading">
+              <pre class="chroma">
 <span class="gp">$</span> ./hello-world
 <span class="go">hello world</span></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>ကျနော်တို့လက်ရှိ Go program ကို run
-နှင့် build လုပ်နိုင်ပြီးရှိလျှင်
-ကျနော်တို့လက်ရှိ Go language ကိုအသေးစိတ်လေ့လာကြရအောင်။</p>
-
-          </td>
-          <td class="code empty">
-            
+            </td>
+          </tr>
           
-          </td>
-        </tr>
+          <tr>
+            <td class="docs">
+              <p>ကျနော်တို့လက်ရှိ Go program ကို run
+              နှင့် build လုပ်နိုင်ပြီးရှိလျှင်
+              ကျနော်တို့လက်ရှိ Go language ကိုအသေးစိတ်လေ့လာကြရအောင်။</p>
+            </td>
+            <td class="code empty"></td>
+          </tr>
+        </table>
         
-      </table>
-      
-      
-      <p class="next">
-        နောက်ဥပမာ: <a href="values">Values</a>.
-      </p>
-      
-
-    <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> နှင့် <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
-    </p>
-
+        <p class="next">
+          နောက်ဥပမာ: <a href="values">Values</a>.
+        </p>
+        
+        <p class="footer">
+          by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> နှင့် <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        </p>
+      </div>
     </div>
+
+    <script>
+      onkeydown = (e) => {
+        if (e.key == "ArrowRight") {
+          window.location.href = 'values';
+        }
+      }
+    </script>
     <script>
       var codeLines = [];
-      codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A    fmt.Println(\"hello world\")\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+      codeLines.push('package main\u000A');
+      codeLines.push('import \"fmt\"\u000A');
+      codeLines.push('func main() {\u000A    fmt.Println(\"hello world\")\u000A}\u000A');
+      codeLines.push('');
+      codeLines.push('');
+      codeLines.push('');
+      codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
